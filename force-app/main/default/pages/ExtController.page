@@ -1,0 +1,42 @@
+<apex:page standardController="Account" extensions="getCampaigns">
+ 
+  <apex:pageBlock >
+     <apex:pageBlockSection >
+         <apex:tabPanel switchType="ajax">
+            <apex:tab label="Account Details" labelWidth="200">
+                <apex:detail relatedList="false"/>
+            </apex:tab>
+            
+             <apex:tab label="Contact" labelWidth="200">
+               <apex:relatedList list="contacts"/>
+            </apex:tab>
+            
+             <apex:tab label="Opportunities" labelWidth="200">
+                <apex:relatedList list="Opportunities"/>
+            </apex:tab>
+            
+             <apex:tab label="Cases" labelWidth="200">
+                <apex:relatedList list="Cases"/>
+            </apex:tab>
+            
+             <apex:tab label="Campaigns" labelWidth="200">
+               <apex:form >  
+                <apex:pageBlockTable value="{!camp}" var="c">
+                    <apex:column value="{!c.name}"/>
+                    <apex:column value="{!c.ActualCost}"/>
+                    <apex:column value="{!c.EndDate}"/>
+                    <apex:column value="{!c.StartDate}"/>
+                     <apex:column value="{!c.Status}"/>
+                </apex:pageBlockTable>
+                
+                <apex:commandButton value="Save" action="{!save}"/>
+                
+               <apex:inlineEditSupport />
+              </apex:form> 
+            </apex:tab>
+            
+         </apex:tabPanel>
+     </apex:pageBlockSection>
+  </apex:pageBlock>
+    
+</apex:page>

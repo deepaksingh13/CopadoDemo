@@ -1,0 +1,23 @@
+<aura:component controller="EmployeeRegistration" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="parentId" type="string" />
+    <aura:attribute name="childObj" type="sObject" default="{Name : '',
+                                                            Date_of_Birth__c : '',
+                                                            Sub_Division__c : ''}"/>
+    
+    <aura:attribute name="subDept" type="String[]" default="['SW,HW']"/>
+    
+    <div>
+        <lightning:input name="{!v.childObj.Name}" label="Enter the Branch"/>
+        
+        <lightning:select name="subDept" label="Choose Sub Department" value="{!v.childObj.Sub_Division__c}">
+        	<aura:iteration items="{!v.subDept}" var="dpt">
+            	<option value="{!dpt}">{!dpt}</option>
+            </aura:iteration>
+        </lightning:select>
+        
+        <lightning:input type="date" name="DOB" label="Date of Birth" value="{!v.childObj.Date_of_Birth__c}"/>
+        
+        <lightning:button class="slds-button slds-button_brand" name="button" label="ICON Employee" onclick="{!c.doSubmitChild}"/>
+
+    </div>
+</aura:component>

@@ -1,0 +1,10 @@
+<apex:page controller="actionpollerDemoController" tabstyle="Account">
+ <apex:form >
+    <apex:pageBlock id="mypageid">
+      <apex:pageBlockSection title="actionPoller example" collapsible="false" columns="1">
+      <apex:actionPoller action="{!callMethod}" rerender="out" interval="10"/>
+      <apex:outputText value="{!seconds}" label="Time in seconds since action poller is called:" id="out"/>
+      </apex:pageBlockSection>
+    </apex:pageblock>
+ </apex:form>
+</apex:page>

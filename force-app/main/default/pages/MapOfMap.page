@@ -1,0 +1,11 @@
+<apex:page controller="MapOfMap">
+    <apex:repeat value="{!mapOf}" var="key1">  <!--Outer map key = key1 -->
+        <apex:pageBlock title="{!key1}">
+            <apex:repeat value="{!mapOf[key1]}" var="key2">  <!--Inner map key = key2 -->
+                <apex:pageBlockSection title="{!key2}">
+                    <apex:outputText value="{!mapOf[key1][key2]}" />
+                </apex:pageBlockSection>
+            </apex:repeat>
+        </apex:pageBlock>
+    </apex:repeat>
+</apex:page>

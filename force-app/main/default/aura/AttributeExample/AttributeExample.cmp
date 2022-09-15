@@ -1,0 +1,28 @@
+<aura:component >
+	 <aura:attribute name="whom" type="String" default="Deepak Singh" access="public"/>
+     <aura:attribute name="Age" type="integer" default="24" access="public"/> 	
+     <aura:attribute name="Car" type="String[]" default="['Audi', 'Ferrari','TATA Car']" access="public"/>
+     <aura:attribute name="CarList" type="List" default="['Audi', 'Ferrari','TATA Car']" access="public"/>
+     <aura:attribute name="CarSet" type="Set" default="['Audi', 'Ferrari','TATA Car']" access="public"/>
+     <aura:attribute name="CarObj" type="Contact" access="public"/>
+     <aura:attribute type="object" name="detailData" />
+    
+    <lightning:layoutItem padding="around-medium">
+        Welcome {!v.whom} <br/>
+    	Age : {!v.Age} <br/><br/>
+        
+        <lightning:input aura:id="ageInput" label="Enter Age" />
+    	<lightning:button value="Change Content" label="Change Content" onclick="{!c.doClick}" />
+    </lightning:layoutItem>  
+    
+    <div aura:id="main">
+       
+            <aura:iteration items="{!v.CarList}" var="c" aura:id="disCar">
+              <div class="slds-page-header data-row">
+                Hello List No {!c}
+              </div>
+            </aura:iteration>
+        
+	</div>
+    
+</aura:component>

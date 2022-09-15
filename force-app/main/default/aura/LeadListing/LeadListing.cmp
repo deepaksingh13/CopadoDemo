@@ -1,0 +1,59 @@
+<aura:component controller="listingLead" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" access="global">
+     <ltng:require styles="{! $Resource.	JQDataTable + '/DataTables-1.10.16/media/css/jquery.dataTables.min.css'}" 
+                  scripts="{!join(',', 
+                           $Resource.JQueryNew , 
+                           $Resource.JQDataTable + '/DataTables-1.10.16/media/js/jquery.dataTables.min.js')
+                           }" />
+    
+    <aura:attribute name="leadList" type="List" />
+    <aura:attribute name="isOpen" type="boolean" default="false"/>
+    <aura:handler name="init" action="{!c.getLeadData}" value="{!this}"/>
+    <aura:registerEvent name="leadRecordId" type="c:leadId"/>
+    
+    <div class="slds-grid">
+        <div class="slds-col slds-size--12-of-12">
+            <div class="btn-bg">
+            	<button class="slds-button slds-button_brand" onclick="{!c.createRecord}">Create</button>
+            </div>
+                <table id="tableId" class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                	<tr>
+                         <th>Name</th>
+                         <th>Owner</th>
+                         <th>Lead Source</th>
+                         <th>Phone</th>
+                         <th>Email</th>
+                         <th>Lead Status</th>
+                         <th></th>
+                	</tr>
+                </thead>
+            	
+                <tbody>
+                	<aura:iteration items="{!v.leadList}" var="lead">
+                       <tr>
+                       	   <td onclick="{!c.getLeadId}" id="{!lead.Id}">{!lead.Name}</td>
+                           <td onclick="{!c.getLeadId}" id="{!lead.Id}">{!lead.Owner.Name}</td>
+                           <td onclick="{!c.getLeadId}" id="{!lead.Id}">{!lead.LeadSource}</td>
+                           <td onclick="{!c.getLeadId}" id="{!lead.Id}">{!lead.Phone}</td>
+                           <td onclick="{!c.getLeadId}" id="{!lead.Id}">{!lead.Email}</td>
+                           <td onclick="{!c.getLeadId}" id="{!lead.Id}">{!lead.Status}</td>
+                           <td><button id="{!lead.Id}" class="slds-button slds-button_destructive" onclick="{!c.deleteRecord}">Delete</button>
+</td>
+                       </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+	<aura:if isTrue="{!v.isOpen}">
+        <div>
+            <c:createLead isOpen="{!v.isOpen}"/>
+        </div>
+    </aura:if> 
+   
+    <div>
+    	<c:leadPopUp></c:leadPopUp>
+    </div>
+    
+</aura:component>

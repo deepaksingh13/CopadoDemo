@@ -1,0 +1,71 @@
+<apex:page controller="contactAcc" docType="html-5.0" sidebar="false" lightningStylesheets="true">
+    <apex:slds />
+     <style type="text/css">
+        #pageContent{ height:500px;overflow:scroll; position:relative ;width:900px; };
+        
+        #header-fixed { 
+    position: fixed; 
+    top: 0px;
+    background-color:white;display: none;
+}
+
+    .dateFormat{ display:none}
+    </style>
+    
+   
+
+    <div class="slds-scope">
+
+ <div id="pageContent">
+      <apex:form >
+            <table style="padding:10px; width:100%" id="table-1">
+               <thead style="background: bisque;position:relative; z-index:22">
+                <tr>
+                    <th style=" position:sticky; top:0;left: 6px; background: bisque;z-index:9">Name</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Department</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Phone</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Email</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Birthday</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Title</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Fax</th>
+                    <th style=" position:sticky; top:0; background: bisque;z-index:5">Assistant Name</th>
+                </tr>
+               </thead> 
+                <apex:repeat value="{!mapAccountWiseContact}" var="ac">
+                
+                  
+                    <tr>
+                        <td colspan="4" style="position:sticky;left:8px; background-color:#fff"> <b> {!ac}</b></td>
+                    </tr>
+                  
+                    
+                    <apex:repeat value="{!mapAccountWiseContact[ac]}" var="c">
+                        <tr>
+                            <td style="position:sticky; left:8px; background-color:#fff"><apex:outputField value="{!c.name}"/></td>
+                            <td><apex:inputField value="{!c.department}"/></td>
+                            <td><apex:inputField value="{!c.phone}"/></td>
+                            <td><apex:inputField value="{!c.email}"/></td>
+                            <td><apex:inputField value="{!c.birthdate}" rendered="{!c.birthdate = ''}"/>
+                                <apex:outputField value="{!c.birthdate}" rendered="{!c.birthdate != ''}"/>
+                            </td>
+                            <td><apex:inputField value="{!c.Title}"/></td>
+                            <td><apex:inputField value="{!c.fax}"/></td>
+                            <td><apex:inputField value="{!c.AssistantName}"/></td>
+                        </tr>
+                        
+                    </apex:repeat>
+                </apex:repeat>
+            </table>
+    </apex:form>
+    <style>
+        
+    </style>
+ </div>
+ </div>
+ 
+  <script type="text/javascript">
+    
+    </script>
+    
+    
+</apex:page>

@@ -1,0 +1,252 @@
+<apex:page docType="html-5.0" controller="tabDetails" showHeader="false">
+   <apex:slds />
+   
+   
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+
+<div class="demo-only">
+   <div class="slds-tabs_default">
+       <ul class="slds-tabs_default__nav" role="tablist">
+           <li class="slds-tabs_default__item slds-is-active" title="Opportunities" role="presentation">
+                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="0" aria-selected="true" aria-controls="tab-default-1" id="tab-default-1__item">
+                 <span class="slds-tabs__left-icon">
+                  <span class="slds-icon_container slds-icon-standard-opportunity" title="Opportunities">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                      <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#opportunity')}"></use>
+                    </svg>
+                  </span>
+                </span>Opportunities</a>
+            </li>
+            
+            <li class="slds-tabs_default__item" title="Cases" role="presentation">
+                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-2" id="tab-default-2__item">
+                 <span class="slds-tabs__left-icon">
+                   <span class="slds-icon_container slds-icon-standard-case" title="Cases">
+                     <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                       <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#case')}"></use>
+                     </svg>
+                   </span>
+                </span>Cases</a>
+            </li>
+            
+            
+            <li class="slds-tabs_default__item" title="Products" role="presentation">
+                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-3" id="tab-default-3__item">
+                  <span class="slds-tabs__left-icon">
+                    <span class="slds-icon_container slds-icon-standard-product" title="Products">
+                     <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                       <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#product')}"></use>
+                     </svg>
+                    </span>
+                </span>Products</a>
+            </li>
+            
+            <li class="slds-tabs_default__item" title="Price Books" role="presentation">
+                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-4" id="tab-default-4__item">
+                  <span class="slds-tabs__left-icon">
+                    <span class="slds-icon_container slds-icon-standard-pricebook" title="Price Books">
+                      <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#pricebook')}"></use>
+                      </svg>
+                    </span>
+                </span>Price Books</a>
+            </li>
+            
+            
+            <li class="slds-tabs_default__item" title="Contacts" role="presentation">
+                <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-5" id="tab-default-5__item">
+                  <span class="slds-tabs__left-icon">
+                   <span class="slds-icon_container slds-icon-standard-contact" title="Contacts">
+                    <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#contact')}"></use>
+                    </svg>
+                   </span>
+                </span>Contacts</a>
+            </li>
+            
+            
+            <li class="slds-tabs_default__item slds-tabs_default__overflow-button" title="More Tabs" role="presentation">
+               <div class="slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                  <button class="slds-button" aria-haspopup="true" id="btn-toggle">More
+                    <svg class="slds-button__icon slds-button__icon_x-small slds-button__icon_right" aria-hidden="true">
+                        <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/utility-sprite/svg/symbols.svg#down')}"></use>
+                    </svg>
+                  </button>
+                  
+                  
+              <div class="slds-dropdown slds-dropdown_right">
+                <ul class="slds-dropdown__list slds-dropdown_length-with-icon-10" role="menu">
+                   <li class="slds-dropdown__item" role="presentation">
+                     <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-6" id="tab-default-6__item">
+                        <span class="slds-truncate" title="Accounts">
+                          <span class="slds-media slds-media_center">
+                           <span class="slds-media__figure">
+                             <span class="slds-icon_container slds-icon-standard-account" title="Description of icon when needed">
+                               <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                 <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#account')}"></use>
+                               </svg>
+                             </span>
+                           </span>
+                          <span class="slds-media__body">Accounts</span>
+                         </span>
+                        </span>
+                      </a>
+                   </li>
+                   
+                   
+                   <li class="slds-dropdown__item" role="presentation">
+                    <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-7" id="tab-default-7__item">
+                      <span class="slds-truncate" title="Approvals">
+                        <span class="slds-media slds-media_center">
+                          <span class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-approval" title="Description of icon when needed">
+                              <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                                <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#approval')}"></use>
+                              </svg>
+                            </span>
+                          </span>
+                       <span class="slds-media__body">Approvals</span>
+                       </span>
+                     </span>
+                    </a>
+                   </li>
+                   
+                   
+                   <li class="slds-dropdown__item" role="presentation">
+                    <a class="slds-tabs_default__link" href="javascript:void(0);" role="tab" tabindex="-1" aria-selected="false" aria-controls="tab-default-8" id="tab-default-8__item">
+                      <span class="slds-truncate" title="Lead">
+                        <span class="slds-media slds-media_center">
+                          <span class="slds-media__figure">
+                            <span class="slds-icon_container slds-icon-standard-lead" title="Description of icon when needed">
+                             <svg class="slds-icon slds-icon_small" aria-hidden="true">
+                              <use xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#lead')}"></use>
+                             </svg>
+                            </span>
+                           </span>
+                        <span class="slds-media__body">Leads</span>
+                        </span>
+                      </span>
+                    </a>
+                  </li>
+                  
+               </ul>
+           </div>
+        </div>
+     </li>
+</ul>
+        <div id="tab-default-1" class="slds-tabs_default__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+           <apex:pageBlock >  
+           
+            <apex:pageBlockTable value="{!opportunities}" var="opp">
+                  <apex:column value="{!opp.name}"/>
+                  <apex:column value="{!opp.IsPrivate}"/>
+                  <apex:column value="{!opp.Probability}"/>
+                  <apex:column value="{!opp.LeadSource}"/>
+              </apex:pageBlockTable>
+            </apex:pageBlock> 
+        </div>
+        <div id="tab-default-2" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-2__item">
+             <apex:pageBlock >  
+            <apex:pageBlockTable value="{!cases}" var="c">
+                  <apex:column value="{!c.account.name}"/>
+                  <apex:column value="{!c.ClosedDate}"/>
+                  <apex:column value="{!c.CreatedDate}"/>
+                  <apex:column value="{!c.Status}"/>
+              </apex:pageBlockTable>
+            </apex:pageBlock> 
+        </div>
+        <div id="tab-default-3" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-3__item">
+            <h2>Item Three Content</h2>
+        </div>
+        <div id="tab-default-4" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-4__item">
+            <h2>Item Four Content</h2>
+        </div>
+        <div id="tab-default-5" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-5__item">
+            <apex:pageBlock >
+             <apex:pageBlockTable value="{!contacts}" var="ct">
+                  <apex:column value="{!ct.Name}"/>
+                  <apex:column value="{!ct.Phone}"/>
+                  <apex:column value="{!ct.LeadSource}"/>
+                  <apex:column value="{!ct.Email}"/>
+              </apex:pageBlockTable>
+            </apex:pageBlock> 
+        </div>
+        
+        <div id="tab-default-6" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-6__item">
+        
+        <apex:form >
+          <apex:pageBlock id="account_list">  
+            <apex:pageBlockTable value="{!accounts}" var="a">
+                  <apex:column value="{!a.name}">
+                       <apex:facet name="header">
+                        <apex:commandLink action="{! sortList}"
+                            reRender="account_list">First Name
+                        </apex:commandLink>
+                      </apex:facet>
+                    </apex:column>
+                              
+                  <apex:column value="{!a.type}"/>
+                  <apex:column value="{!a.AccountNumber}"/>
+                  <apex:column value="{!a.AnnualRevenue}"/>
+              </apex:pageBlockTable>
+            </apex:pageBlock>
+          </apex:form>   
+        </div>
+        
+        <div id="tab-default-7" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-7__item">
+            <h2>Item Seven Content</h2>
+        </div>
+        
+        <div id="tab-default-8" class="slds-tabs_default__content slds-hide" role="tabpanel" aria-labelledby="tab-default-8__item">
+            <apex:pageBlock > 
+             <apex:pageBlockTable value="{!leads}" var="le">
+                  <apex:column value="{!le.Name}"/>
+                  <apex:column value="{!le.Email}"/>
+                  <apex:column value="{!le.Company}"/>
+                  <apex:column value="{!le.Status}"/>
+              </apex:pageBlockTable>
+            </apex:pageBlock> 
+        </div>
+    </div>
+</div>
+
+
+    <apex:includeScript value="{! $Resource.jQuery }"/>
+    
+      <script>
+        var $ = jQuery.noConflict();
+      </script>
+
+    <script type="text/javascript">
+    
+    $(document).ready(function(){
+        $('.slds-dropdown').css('display','none');
+        
+         $('#btn-toggle').click(function(){
+           $('.slds-dropdown').slideToggle();
+         }); 
+        
+    }); 
+   
+    
+  $('.slds-tabs_default__link').click(function(){
+     $('.slds-dropdown').slideUp();
+      $(this).attr('aria-selected','true');
+      $(this).attr('tabindex','0');
+      $(this).parent().addClass('slds-is-active').siblings().removeClass('slds-is-active');
+    
+      var getAttr = $(this).attr('aria-controls');
+      
+      $('.slds-tabs_default__content').removeClass('slds-show').addClass('slds-hide');
+      
+      $('#' +getAttr).addClass('slds-show').removeClass('slds-hide');
+  
+    }); 
+    
+    
+    </script>
+    
+    </html>
+   
+</apex:page>

@@ -1,0 +1,157 @@
+<apex:page Controller="TaskAssignmentController" LightningStylesheets="true" docType="html-5.0" sidebar="false" showHeader="false">
+<html>
+    <script type="text/javascript">
+        function selectCheckboxes(obj,receivedInputID){
+            var inputCheckBox = document.getElementsByTagName("input");                  
+            for(var i=0; i<inputCheckBox.length; i++){          
+                if(inputCheckBox[i].id.indexOf(receivedInputID)!=-1){                                     
+                    inputCheckBox[i].checked = obj.checked;
+                }
+            }
+        }
+    </script>
+  <head>
+    
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+      <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"></link>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <apex:insert name="Task Assignment Tool"/>
+
+      <!--  <apex:stylesheet value="{!URLFOR($Resource.slds, 'assets/styles/salesforce-lightning-design-system-vf.min.css')}" />-->
+
+        <style>
+            body {
+            background-image: url("");
+            background-repeat:repeat;
+           }
+
+          @media only screen and (max-width: 600px) {
+         body {
+        background-color: lightgreen;
+              }
+          }
+         </style>
+  </head>
+  
+  </html>
+  <apex:form >
+  <center>
+  <!--<apex:image id="theImage" value="{!$Resource.RGGroupLogo}" width="100px" height="100px"/>-->
+  <br/>
+  <br/>
+  </center>
+  <div class="panel panel-info">
+  <H1 style="font-size:18px"> <center>Task Assignment Tool </center></H1>
+  </div>
+  <br/>
+      <apex:outputPanel Styleclass="panel-body">
+      <div class="container">
+      <body>
+      <center>
+       <br/>
+        <fieldset style="border:1px groove;;">
+        <br/>
+       <apex:outputLabel value="From:"/>&nbsp;&nbsp;&nbsp;&nbsp;
+       <apex:selectList value="{!username}" multiselect="false" size="1" >
+            <apex:selectOptions value="{!UserList}"/>
+        </apex:selectList>
+       <br/>
+       <br/>
+       <apex:outputLabel value="Start Date:"/>&nbsp;&nbsp;&nbsp;&nbsp;
+       <apex:input type="date" value="{!duedate}" id="duedte"/>
+       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+       <apex:outputLabel value="End Date:"/>&nbsp;&nbsp;&nbsp;&nbsp;
+       <apex:input type="date" value="{!enddate}" id="enddte"/>
+       <br/>
+       <br/>
+       <apex:outputLabel value="Task Type:"/>&nbsp;&nbsp;&nbsp;&nbsp;
+       <apex:selectList value="{!tasktype}" multiselect="false" size="1" >
+            <apex:selectOption itemValue="--Select--" itemLabel="--Select--"/>
+            <apex:selectOption itemValue="Call" itemLabel="Call"/>
+            <apex:selectOption itemValue="Email" itemLabel="Email"/>
+            <apex:selectOption itemValue="Other" itemLabel="Other"/>
+        </apex:selectList>
+        <br/>
+        <br/>
+       <apex:outputLabel value="Task Count:"/>
+       <apex:outputText value="{!countTask}"/>
+        <br/>
+        <br/>
+       
+       <!--<apex:pageBlockButtons location="Bottom" dir="center">-->
+                <apex:commandButton styleClass="slds-button slds-button--brand slds-button--neutral slds-not-selected" value="Find Tasks" action="{!showTasks}"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <!--<apex:commandButton styleClass="slds-button slds-button--brand slds-button--neutral slds-not-selected" value="Transfer Task" action="{!showTasks}"/>-->
+                <button type="button" class="slds-button slds-button--brand slds-button--neutral slds-not-selected" data-toggle="modal" data-target="#myModal">Transfer Tasks</button>
+       <!--</apex:pageBlockButtons>-->
+       <br/>
+       <br/>
+        </fieldset>
+        
+      </center>
+      </body>
+      </div>
+      </apex:outputPanel>
+      <br/>
+      <br/>
+      
+    <apex:pageMessages />
+
+    <apex:pageBlock id="tabledata" rendered="{!showtable}">
+             
+                <apex:pageBlockTable value="{!wrapTaskList}" var="taskWrap" id="table" title="All tasks">
+                    <apex:column >
+                        <apex:facet name="header">
+                            <apex:inputCheckbox onclick="selectCheckboxes(this,'inputId')"/>
+                        </apex:facet>
+                        <apex:inputCheckbox value="{!taskWrap.selected}" id="inputId"/>
+                    </apex:column>
+                    <apex:column value="{!taskWrap.tsk.Owner.Name}" />
+                    <apex:column value="{!taskWrap.tsk.Who.Name}" />
+                    <apex:column value="{!taskWrap.tsk.Subject}" />
+                    <apex:column value="{!taskWrap.tsk.Status}" />
+                    <apex:column value="{!taskWrap.tsk.ActivityDate}" />
+                </apex:pageBlockTable>          
+                       
+                <!--<apex:pageBlockTable value="{!selectedTasks}" var="c" id="table2" title="Selected Tasks">
+                    <apex:column value="{!c.Owner.Name}" headerValue="Owner Name"/>
+                    <apex:column value="{!c.Subject}" headerValue="Subject"/>
+                    <apex:column value="{!c.Status}" headerValue="Status"/>
+                </apex:pageBlockTable>-->
+          </apex:pageBlock>
+                
+                 <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <center>
+          <h3 class="modal-title">Please Select The User You Want To Assign Tasks To:</h3>
+          </center>
+        </div>
+        <div class="modal-body">
+        <center>
+          <apex:outputLabel value="To:"/>&nbsp;&nbsp;&nbsp;&nbsp;
+          <apex:selectList value="{!transferTo}" multiselect="false" size="1" >
+            <apex:selectOptions value="{!UserList}"/>
+        </apex:selectList>
+          </center>
+        </div>
+        <div class="modal-footer">
+        <center>
+          <button type="button" class="slds-button slds-button--brand slds-button--neutral slds-not-selected" data-dismiss="modal" Onclick="actionFunction();">Done</button>
+          <apex:actionFunction name="actionFunction" action="{!showSelectedTasks}"/>
+          </center>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+ </apex:form>
+ </apex:page>

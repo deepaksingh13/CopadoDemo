@@ -1,0 +1,22 @@
+<apex:page controller="MappingsObject">
+<style>
+  
+</style>
+<apex:slds />
+    <apex:pageBlock >
+       <apex:repeat value="{!mapAccountContCase}" var="item" >  
+            <apex:pageBlockSection collapsible="false" title="{!item}">            
+              
+                 <apex:repeat value="{!mapAccountContCase[item]}" var="mapCont">
+                         <apex:outputText value="{!mapCont}" />
+                       <apex:pageBlockTable value="{!mapAccountContCase[item][mapCont]}" var="record">
+                            <apex:column value="{!record.subject}" />
+                            <apex:column value="{!record.Priority}"/>
+                       </apex:pageBlockTable>
+                  
+                </apex:repeat>   
+              </apex:pageBlockSection>
+          </apex:repeat>
+      </apex:pageBlock>
+    
+</apex:page>

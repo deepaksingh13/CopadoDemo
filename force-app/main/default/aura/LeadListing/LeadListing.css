@@ -1,0 +1,30 @@
+.THIS .dataTables_wrapper, .THIS.slds-grid {
+    background-color: #dfcfff;
+}
+
+.THIS .btn-bg{
+    padding:20px;
+    text-align:center;
+}
+
+.THIS .dataTables_length, .THIS .dataTables_filter, .THIS .dataTables_info{
+    color: darkblue;
+    margin: 20px;
+}
+
+.THIS .dataTables_filter label{
+    display: flex;
+    align-items: center;
+}
+
+.THIS .slds-modal__header, .THIS .slds-modal__footer , .THIS .slds-modal__content{
+    background-color: #cacbdc;  
+}
+
+.THIS .slds-p-around_small{
+    display:inline-block;
+}
+
+.THIS #tableId td{
+    cursor: pointer;
+}

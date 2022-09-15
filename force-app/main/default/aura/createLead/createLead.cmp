@@ -1,0 +1,65 @@
+<aura:component controller="listingLead" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="isOpen" type="boolean"/>
+    <aura:attribute name="leadObj" type="lead" default="{Name : '',
+                                                        LeadSource :'',
+                                                        Email : '',
+                                                        Phone : '',
+                                                        Status : ''}"/>
+    
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                  
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+					     <lightning:layoutItem size="6" padding="around-small">
+                     		<lightning:input label="Name" value="{!v.leadObj.LastName}" />
+                        </lightning:layoutItem>  
+                    	
+                        <lightning:layoutItem size="6" padding="around-small">
+                        	<lightning:input label="Company" value="{!v.leadObj.Company}" />
+                        </lightning:layoutItem>
+                        
+                        <lightning:layoutItem size="6" padding="around-small">
+                              <lightning:select label="Lead Source" name="LeadSource" value="{!v.leadObj.LeadSource}">
+                                  <option value="" label="Select">Select</option>
+                                  <option value="Organic inbound" label="Organic inbound">Organic inbound</option>
+                                  <option value="Newspaper ad" label="Newspaper ad">Newspaper ad</option>
+                                  <option value="Word of Mouth" label="Word of Mouth">Word of Mouth</option>
+                                  <option value="FB Lead Gen ad" label="FB Lead Gen ad">FB Lead Gen ad</option>
+                                  <option value="Website" label="Website">Website</option>
+                              </lightning:select>
+                        </lightning:layoutItem>
+
+                      <!--  <lightning:input label="Lead Source" value="{!v.leadDetail.LeadSource}" />-->
+                        <lightning:layoutItem size="6" padding="around-small">
+                        	<lightning:input label="Email" value="{!v.leadObj.Email}" />
+                        </lightning:layoutItem>
+                        
+                        <lightning:layoutItem size="6" padding="around-small">
+                        	<lightning:input label="Phone" value="{!v.leadObj.Phone}" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" />
+                        </lightning:layoutItem>
+                        
+                        <lightning:layoutItem size="6" padding="around-small">
+                             <lightning:select label="Lead Status" name="LeadStatus" value="{!v.leadObj.Status}">
+                                  <option value="" label="Select">Select</option>
+                                  <option value="Open" label="Open">Open</option>
+                                  <option value="Approval Pending" label="Approval Pending">Approval Pending</option>
+                                  <option value="Approval Accepted" label="Approval Accepted">Approval Accepted</option>
+                                  <option value="Onboarded" label="Onboarded">Onboarded</option>
+                                  <option value="Declined" label="Declined">Declined</option>
+                                  <option value="Delive" label="Delive">Delive</option>
+                              </lightning:select>
+                        </lightning:layoutItem>
+                    </div>
+
+                    <footer class="slds-modal__footer">
+                  		 <lightning:button variant="neutral" label="Cancel" 
+                                          title="Cancel" onclick="{!c.closeModel}"/>
+                      	 <lightning:button variant="neutral" label="Create" 
+                                          title="Update" onclick="{!c.createLead}"/>
+                    </footer>
+                         
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+          
+</aura:component>

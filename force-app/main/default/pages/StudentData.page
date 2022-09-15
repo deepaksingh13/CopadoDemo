@@ -1,0 +1,35 @@
+<apex:page showHeader="false" standardController="Mark__c" extensions="Markext" recordSetVar="marks">
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockSection >
+         <table>
+             
+             <tr>
+                 <th></th>
+                 <th>College/Students</th>
+                 <th colspan="1" style="text-align:center">Marks</th>
+             </tr>
+             
+           <apex:repeat value="{!thismark}" var="m">
+             <tr>
+                 <td></td>
+                 <td style="padding-right:10px;">{!m.Account__r.name}</td>
+                 <td style="padding-right:10px;">English</td> 
+                 <td>Maths</td>
+             </tr>
+             
+             <apex:repeat value="{!m}" var="md">
+             <tr>
+                      <td></td>
+                      <td>{!md.Contact__r.name}</td>
+                      <td>{!md.English__c}</td> 
+                      <td>{!md.Maths__c}</td> 
+                  
+             </tr>
+               </apex:repeat>
+             </apex:repeat>
+         </table>
+       </apex:pageBlockSection>
+     </apex:pageBlock>
+</apex:form>
+</apex:page>

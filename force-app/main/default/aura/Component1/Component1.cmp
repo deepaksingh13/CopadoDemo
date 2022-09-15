@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" access="global">
+	    <aura:registerEvent name="SampleApplicationEvent" type="c:SampleApplicationEvent"/>
+    
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    Component 1<br/>
+        <lightning:button label="Click to fire the event" variant="brand" onclick="{!c.component1Event}"/>
+
+</aura:component>

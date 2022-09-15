@@ -1,0 +1,29 @@
+<apex:page controller="getData">
+  
+ <apex:pageBlock >
+      <apex:pageBlockSection title="Account Detail">
+      
+      <apex:tabPanel switchType="ajax">
+          <apex:tab label="Direct Type" labelWidth="400">
+              <apex:pageBlockTable value="{!DirectType}" var="a">
+                  <apex:column value="{!a.name}"/>
+                  <apex:column value="{!a.type}"/>
+                  <apex:column value="{!a.industry}"/>
+                  <apex:column value="{!a.phone}"/>
+              </apex:pageBlockTable>
+          </apex:tab>
+          
+          <apex:tab label="Channel Type" labelWidth="400">
+              <apex:pageBlockTable value="{!ChannelType}" var="a">
+                  <apex:column value="{!a.name}"/>
+                  <apex:column value="{!a.type}"/>
+                  <apex:column value="{!a.industry}"/>
+                  <apex:column value="{!a.phone}"/>
+              </apex:pageBlockTable>
+          </apex:tab>
+      </apex:tabPanel>
+      
+      </apex:pageBlockSection>
+  </apex:pageBlock>
+  
+</apex:page>

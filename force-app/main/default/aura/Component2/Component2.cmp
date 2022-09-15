@@ -1,0 +1,8 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome" access="global">
+<aura:attribute name="eventMessage" type="String"/> 
+    <aura:handler event="c:SampleApplicationEvent" action="{!c.component2Event}"/>
+    <div class="slds-m-around_xx-large">
+        Comp2
+        <p>{!v.eventMessage}</p> 
+    </div>	
+</aura:component>

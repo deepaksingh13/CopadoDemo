@@ -1,0 +1,36 @@
+<aura:component controller="EmployeeRegistration" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="companyName" type="string" default="ICON TECHNOCLOUD"/>
+    <aura:attribute name="ename" type="string" default=""/>
+    <aura:attribute name="fathername" type="string" default=""/>
+    <aura:attribute name="salary" type="integer" default=""/>
+    <aura:attribute name="department" type="string" default=""/>
+    <aura:attribute name="epOrg" type="string" default=""/>
+    <aura:attribute name="obj" type="sObject" default="{Employee_Name__c :'',
+                                                       Employee_Father_Name__c : '',
+                                                       Employee_Salary__c : '',
+                                                       Employee_Department__c : '',
+                                                       Employee_Previous_Org__c : ''}"/>
+    
+    <aura:attribute name="childObj" type="list" default=""/>
+  
+  <div style="background:#fafaf9; padding:20px">
+    <div class="slds-align_absolute-center slds-size-1of-3">
+    	<h2 class="slds-page-header">{!v.companyName}</h2>
+    </div>
+    
+    <div class="form">
+        <lightning:input name="ename" label="Enter Employee Name" value="{!v.obj.Employee_Name__c}"/>
+        <lightning:input name="fathername" label="Enter Father Name" value="{!v.obj.Employee_Father_Name__c}"/>
+        <lightning:input name="salary" label="Enter Salary" value="{!v.obj.Employee_Salary__c}"/>
+        <lightning:input name="department" label="Enter Department Name" value="{!v.obj.Employee_Department__c}"/>
+        <lightning:input name="epOrg" label="Enter Previous Org Name" value="{!v.obj.Employee_Previous_Org__c}"/>
+        
+        <lightning:button class="slds-button slds-button_brand" name="button" label="ICON Employee Registration" onclick="{!c.doSubmit}"/>
+        <lightning:button class="slds-button slds-button_brand" name="button" label="ADD Row" onclick="{!c.addRow}"/>
+        
+        <aura:iteration items="{!v.childObj}" var="child">
+            <c:employeeChildComp parentId="{!v.obj.Id}" childObj="{!child}"/>
+        </aura:iteration>
+    </div> 
+  </div>    
+</aura:component>

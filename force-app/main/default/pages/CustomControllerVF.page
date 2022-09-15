@@ -1,0 +1,9 @@
+<apex:page controller="ContactlstController">
+    <apex:pageBlock >
+          <apex:pageBlockTable value="{!Contact}" var="c">
+              <apex:column value="{!c.FirstName}"/>
+              <apex:column value="{!c.LastName}"/>
+          </apex:pageBlockTable>
+
+    </apex:pageBlock>
+</apex:page>
