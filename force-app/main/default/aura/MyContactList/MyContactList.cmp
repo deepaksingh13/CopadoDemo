@@ -11,7 +11,7 @@
                       targetFields="{!v.Account}"
                       layoutType="FULL"
                       />
-    
+    <!-- Deepak Code -->
     <lightning:card iconName="standard:contact" title="{! 'Contact List for ' + v.Account.Name}">
       	<!-- Contact list goes here -->
          <lightning:datatable data="{! v.Contacts }" columns="{! v.Columns }" keyField="Id" hideCheckboxColumn="true"/>
